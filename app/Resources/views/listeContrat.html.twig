@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {% for contrat in listContrat %}
+            <div class ="nom">
+            {{ contrat.nom}}
+            </div>
+            <div class ="prenom">
+                {{ contrat.prenom}}
+            </div>
+            <div class ="entreprise">
+                {{ contrat.entreprise}}
+            </div>
+
+            <div class ="date">
+                {{ contrat.sub|date("Y-m-d H:i:s")}}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

@@ -49,6 +49,16 @@ class DefaultController extends Controller
      */
     public function mesOffresAction(Request $request)
     {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Contrat')
+        ;
+
+        $listContrat = $repository->findAll();
+        return $this->render('listeContrat.html.twig', [
+            'listContrat' => $listContrat,
+        ]);
 
     }
 
