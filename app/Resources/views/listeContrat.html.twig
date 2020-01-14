@@ -1,26 +1,120 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/listeContrat.css') }}">
+{% endblock %}
 {% block body %}
     <div class="container">
-        {% for contrat in listContrat %}
-            <div class ="nom">
-            {{ contrat.nom}}
-            </div>
-            <div class ="prenom">
-                {{ contrat.prenom}}
-            </div>
-            <div class ="entreprise">
-                {{ contrat.entreprise}}
-            </div>
 
-            <div class ="date">
-                {{ contrat.sub|date("Y-m-d H:i:s")}}
-            </div>
-        {% endfor %}
+        <form method="GET" action="{{path('finder')}}">
+       <div class="row">
+
+
+           <div class="col">
+               <input class="form-control" name="student"
+                      type="text" placeholder="Rechercher par etudiant">
+           </div>
+
+           <div class="col">
+               <input class="form-control" name="corp"
+                       type="text" placeholder="Rechercher par entreprise">
+           </div>
+               <button type="submit" class="btn btn-primary">Submit</button>
+
+       </div>
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Prenom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Entreprise</th>
+                <th scope="col">Date Soumission</th>
+                <th scope="col">Validé</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">PDF</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+                {% for contrat in listContrat %}
+                    <tr>
+                    <th scope="row">
+                        {{ contrat.prenom}}
+
+                    </th>
+                    <td class ="prenom">
+                        {{ contrat.nom}}
+                    </td>
+                    <td class ="entreprise">
+                        {{ contrat.entreprise}}
+                    </td>
+
+                    <td class ="date">
+                        {{ contrat.sub|date("Y-m-d H:i:s")}}
+                    </td>
+                        <td class="isvalid">
+                            {% if contrat.isaccept %}
+                                <i class="material-icons status " id="tag{{ contrat.id }}" data-toggle="modal" data-target="#Modal{{ contrat.id }}">
+                                    check
+                                </i>
+                            {% else %}
+                                <i class="material-icons status"  id="tag{{ contrat.id }}" data-toggle="modal" data-target="#Modal{{ contrat.id }}">
+                                    close
+                                </i>
+
+                                {% endif %}
+                        </td>
+                        <td class ="">
+                            <a class="btn btn-primary" href="{{ path('form_contrat',{'id' : contrat.id}) }}">Modifier</a>
+                        </td>
+                        <td class ="">
+                            <a href="{{ asset('uploads/brochures/' ~ contrat.offrePdf) }}">View offre (PDF)</a>
+                        </td>
+
+                        <td class ="">
+                            <a class="btn btn-danger" href="{{ path('removeContrat',{'id' : contrat.id}) }}">Supprimer</a>
+                        </td>
+
+            </tr>
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+
     </div>
+
+    {% for contrat in listContrat %}
+        {% if not contrat.isAccept %}
+    <div class="modal fade" id="Modal{{ contrat.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Valider la demande de {{ contrat.prenom }} {{ contrat.nom }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Souhaitez vous vraiment valider la demande de {{ contrat.prenom }} {{ contrat.nom }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary refuseModal" data-dismiss="modal">NON</button>
+                    <button type="button" class="btn btn-primary acceptModal"  data-contratid="{{ contrat.id }}">OUI</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% endif %}
+    {% endfor %}
 
 {% endblock %}
 
-{% block stylesheets %}
+{% block javascripts %}
+    <script src="{{ asset('js/listeContratAjax.js')}}"></script>
 
 {% endblock %}

@@ -7,6 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    pdf_directory: '%kernel.project_dir%/web/uploads/brochures'
 
 framework:
     #esi: ~
@@ -35,6 +36,7 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes: ['bootstrap_4_layout.html.twig']
 
 # Doctrine Configuration
 doctrine:
@@ -76,3 +78,4 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+

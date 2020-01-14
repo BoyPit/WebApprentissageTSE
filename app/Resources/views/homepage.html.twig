@@ -2,7 +2,34 @@
 
 {% block body %}
     <div class="container">
-       {{ form(form) }}
+
+
+
+        {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_row(form.prenom) }}
+
+            </div>
+            <div class="form-group">
+            {{ form_row(form.nom) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.entreprise) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.commentaire) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.offrePdf) }}
+        </div>
+
+        <div class="form-group">
+        {{ form_row(form.save) }}
+        </div>
+        {{ form_end(form) }}
+
+
     </div>
 
 {% endblock %}

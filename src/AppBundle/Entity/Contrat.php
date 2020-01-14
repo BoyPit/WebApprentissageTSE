@@ -36,6 +36,11 @@ class Contrat
     private $entreprise;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $commentaire;
+
+    /**
      * @var \DateTime
      * @ORM\Column( type="datetime")
      */
@@ -47,6 +52,12 @@ class Contrat
      */
     private $isAccept;
 
+
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $offrePdf;
 
 
 
@@ -141,5 +152,37 @@ class Contrat
     public function setSub($sub)
     {
         $this->sub = $sub;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentaire()
+    {
+        return $this->commentaire;
+    }
+
+    /**
+     * @param mixed $commentaire
+     */
+    public function setCommentaire($commentaire)
+    {
+        $this->commentaire = $commentaire;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOffrePdf()
+    {
+        return $this->offrePdf;
+    }
+
+    /**
+     * @param mixed $offrePdf
+     */
+    public function setOffrePdf($offrePdf)
+    {
+        $this->offrePdf = $offrePdf;
     }
 }
