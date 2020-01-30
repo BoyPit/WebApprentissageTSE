@@ -3,6 +3,7 @@
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpClient\HttplugClient;
 
 class AppKernel extends Kernel
 {
@@ -16,6 +17,10 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+
+            //   new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+       //     new Http\HttplugBundle\HttplugBundle(),
             new AppBundle\AppBundle(),
         ];
 

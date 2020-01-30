@@ -6,6 +6,8 @@
 {% block body %}
     <div class="container">
 
+        {% if is_granted('ROLE_ADMIN') %}
+
         <form method="GET" action="{{path('finder')}}">
        <div class="row">
 
@@ -23,6 +25,9 @@
 
        </div>
         </form>
+            {% else %}
+            <H4 class="py-4"> LISTE DE MES DEMANDES</H4>
+        {% endif %}
 
         <table class="table">
             <thead>
@@ -31,7 +36,9 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Entreprise</th>
                 <th scope="col">Date Soumission</th>
+
                 <th scope="col">Validé</th>
+
                 <th scope="col">Modifier</th>
                 <th scope="col">PDF</th>
 
@@ -56,6 +63,8 @@
                     <td class ="date">
                         {{ contrat.sub|date("Y-m-d H:i:s")}}
                     </td>
+                        {% if is_granted('ROLE_ADMIN') %}
+
                         <td class="isvalid">
                             {% if contrat.isaccept %}
                                 <i class="material-icons status " id="tag{{ contrat.id }}" data-toggle="modal" data-target="#Modal{{ contrat.id }}">
@@ -68,11 +77,32 @@
 
                                 {% endif %}
                         </td>
+                            {% else %}
+                        <td class="isvalid">
+                            {% if contrat.isaccept %}
+                                <i class="material-icons" data-toggle="modal" data-target="#Modal{{ contrat.id }}">
+                                    check
+                                </i>
+                            {% else %}
+                                <i class="material-icons"  data-toggle="modal" data-target="#Modal{{ contrat.id }}">
+                                    close
+                                </i>
+
+                            {% endif %}
+                        </td>
+
+                        {% endif %}
+
                         <td class ="">
                             <a class="btn btn-primary" href="{{ path('form_contrat',{'id' : contrat.id}) }}">Modifier</a>
                         </td>
                         <td class ="">
-                            <a href="{{ asset('uploads/brochures/' ~ contrat.offrePdf) }}">View offre (PDF)</a>
+                            {% if contrat.offrePdf  is not empty %}
+                            <a href="{{ asset('uploads/brochures/' ~ contrat.offrePdf) }}"> PDF </a>
+                            {% else %}
+                                <p href="">PDF </p>
+
+                            {% endif %}
                         </td>
 
                         <td class ="">
@@ -87,6 +117,7 @@
         </table>
 
     </div>
+    {% if is_granted('ROLE_ADMIN') %}
 
     {% for contrat in listContrat %}
         {% if not contrat.isAccept %}
@@ -111,10 +142,14 @@
     </div>
         {% endif %}
     {% endfor %}
+    {% endif %}
 
 {% endblock %}
 
 {% block javascripts %}
+    {% if is_granted('ROLE_ADMIN') %}
+
     <script src="{{ asset('js/listeContratAjax.js')}}"></script>
+    {% endif %}
 
 {% endblock %}

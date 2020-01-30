@@ -20,6 +20,8 @@ class Contrat
      */
     private $id;
 
+
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -55,10 +57,16 @@ class Contrat
 
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $offrePdf;
 
+    /**
+     * Many features have one product. This is the owning side.
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="demandes")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
 
     public function __construct()
@@ -184,5 +192,21 @@ class Contrat
     public function setOffrePdf($offrePdf)
     {
         $this->offrePdf = $offrePdf;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 }

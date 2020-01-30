@@ -67,12 +67,17 @@ class DefaultController extends Controller
                 $contrat->setOffrePdf($newFilename);
             }
 
+            $this->getUser()->addDemande($contrat);
+
 
             $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($contrat);
                 $entityManager->flush($contrat);
 
-            }
+            return $this->redirect($this->generateUrl('homepage'));
+
+
+        }
 
 
 
@@ -87,13 +92,19 @@ class DefaultController extends Controller
      */
     public function mesOffresAction(Request $request)
     {
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Contrat')
-        ;
 
-        $listContrat = $repository->findAll();
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+
+            $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('AppBundle:Contrat');
+            $listContrat = $repository->findAll();
+        }
+        else{
+            $listContrat = $this->getUser()->getDemandes();
+        }
+
         return $this->render('listeContrat.html.twig', [
             'listContrat' => $listContrat,
         ]);
