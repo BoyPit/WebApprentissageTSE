@@ -13,8 +13,7 @@ Voici un détails de l'arborescence afin de trouver les fichiers désiré
 | bin  | Stocke les scripts exécutables.  |
 | src  | Stocke le code de notre application.  |
 | tests  | Stocke la liste des tests unitaires et fonctionnels..  |
-| var	  | Stocke les logs, les caches et les sessions générés par notre application.
-  |
+| var	  | Stocke les logs, les caches et les sessions générés par notre application.|
 | vendor  | Stocke les bundles tiers utilisés dans notre application.  |
 | web  | les fichiers "publics" de notre application app.php, app_dev.php,  robots.txt, Css, Js, images, fonts, …  |
 | app\Ressources	  | Stocke les fichiers Templates commun, les Templates d’exception, tout fichier commun.  |
@@ -25,19 +24,14 @@ Voici un détails de l'arborescence afin de trouver les fichiers désiré
 | src\AppBundle\Controller	  | Stocke tous les Controllers de traitement des requêtes http.  |
 | src\AppBundle\DataFixtures	  | Stocke les jeux données  afin d'avoir des données pour le fonctionnement de l'application.  |
 | src\AppBundle\Entity	  | Stocke les déclarations des différentes entités doctrine.  |
-| src\AppBundle\Repository	  | Stocke toute les requêtes doctrines  ou SQL sur la base de données
-  |
+| src\AppBundle\Repository	  | Stocke toute les requêtes doctrines  ou SQL sur la base de données|
 | src\AppBundle\Listener	  | Stocke les Listeners qui permettent  d’écouter des évènements et exécuter des tâches en fonction.  |
 | src\AppBundle\Model	  | Stocke tous nos models de données sans la persistance doctrine afin d’être indépendant.  |
-| src\AppBundle\Form		  | Stock les différents formulaires de l’application.
- |
-| src\AppBundle\Manager |  Stocke le code métier à utiliser dans les Controllers.
-|
+| src\AppBundle\Form		  | Stock les différents formulaires de l’application.|
+| src\AppBundle\Manager |  Stocke le code métier à utiliser dans les Controllers.|
 | src\AppBundle\Ressources		  | 	Stocke les fichiers config, vues, images et tous les fichiers  nécessaires au fonctionnement de la vue. |
-| src\AppBundle\Twig		  | Stocke les extensions Twig personnel.
- |
-| src\AppBundle\Utils	  |  Stocke les traitements personnels de l’application (méthode de césure, ..).
- |
+| src\AppBundle\Twig		  | Stocke les extensions Twig personnel.|
+| src\AppBundle\Utils	  |  Stocke les traitements personnels de l’application (méthode de césure, ..).|
 
 
 
