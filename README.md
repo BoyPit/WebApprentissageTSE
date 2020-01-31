@@ -1,69 +1,45 @@
-Symfony Standard Edition
+Projet N-Tier Arthur Pinier-Rafer
 ========================
 
-**WARNING**: This distribution does not support Symfony 4. See the
-[Installing & Setting up the Symfony Framework][15] page to find a replacement
-that fits you best.
-
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
-
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
-What's inside?
+Introduction 
 --------------
+Le projet a été développer avec Symfony 3.4 
 
-The Symfony Standard Edition is configured with the following defaults:
+Voici un détails de l'arborescence afin de trouver les fichiers désiré
 
-  * An AppBundle you can use to start coding;
+| Dossier  | Rôle |
+| ------------- | ------------- |
+| app | Stocke les configurations, traductions,  Template, …  |
+| bin  | Stocke les scripts exécutables.  |
+| src  | Stocke le code de notre application.  |
+| tests  | Stocke la liste des tests unitaires et fonctionnels..  |
+| var	  | Stocke les logs, les caches et les sessions générés par notre application.
+  |
+| vendor  | Stocke les bundles tiers utilisés dans notre application.  |
+| web  | les fichiers "publics" de notre application app.php, app_dev.php,  robots.txt, Css, Js, images, fonts, …  |
+| app\Ressources	  | Stocke les fichiers Templates commun, les Templates d’exception, tout fichier commun.  |
+| app\config	  | Stocke les configurations, paramétrages,  services, routes de tous nos environnements.  |
+| app\DoctrineMigrations	  | Stocke les migrations doctrines pour la gestion des changements de la base de données via DoctrineMigrationsBundle  |
+| App\translations	  | Stocke tous les fichiers de traduction de l'application  |
+| src\AppBundle\Command	  | Stocke toutes les tâches et  routines à exécuter.  |
+| src\AppBundle\Controller	  | Stocke tous les Controllers de traitement des requêtes http.  |
+| src\AppBundle\DataFixtures	  | Stocke les jeux données  afin d'avoir des données pour le fonctionnement de l'application.  |
+| src\AppBundle\Entity	  | Stocke les déclarations des différentes entités doctrine.  |
+| src\AppBundle\Repository	  | Stocke toute les requêtes doctrines  ou SQL sur la base de données
+  |
+| src\AppBundle\Listener	  | Stocke les Listeners qui permettent  d’écouter des évènements et exécuter des tâches en fonction.  |
+| src\AppBundle\Model	  | Stocke tous nos models de données sans la persistance doctrine afin d’être indépendant.  |
+| src\AppBundle\Form		  | Stock les différents formulaires de l’application.
+ |
+| src\AppBundle\Manager |  Stocke le code métier à utiliser dans les Controllers.
+|
+| src\AppBundle\Ressources		  | 	Stocke les fichiers config, vues, images et tous les fichiers  nécessaires au fonctionnement de la vue. |
+| src\AppBundle\Twig		  | Stocke les extensions Twig personnel.
+ |
+| src\AppBundle\Utils	  |  Stocke les traitements personnels de l’application (méthode de césure, ..).
+ |
 
-  * Twig as the only configured template engine;
 
-  * Doctrine ORM/DBAL;
-
-  * Swiftmailer;
-
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
 
 [1]:  https://symfony.com/doc/3.4/setup.html
 [6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
