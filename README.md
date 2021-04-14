@@ -1,4 +1,4 @@
-Projet N-Tier Arthur Pinier-Rafer
+Goal => Student Plateforme for Homework submition
 ========================
 
 Introduction 
